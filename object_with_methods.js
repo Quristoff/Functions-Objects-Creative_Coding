@@ -14,22 +14,25 @@ function sineMovement(double) {
 var audioBall = {
   radius: 10,
   group: 10,
+  //colorCode:
   draw: function (xPos,yPos,array) { // method with parameter 2
 
 
-    // two auxilitary balls
+    //two auxilitary balls
+    var position = map(mouseY,height/2,height,width/2,width/6)
     fill(0,0,255,100);
-    ellipse(xPos-mouseY/2+height/2-width/2,yPos,this.radius*1.5);
+    ellipse(position,yPos,this.radius*1.5);
 
+    position = map(mouseY,height/2,height,width/2,5*width/6)
     fill(255,0,0,100);
-    ellipse(xPos+mouseY/2-height/2+width/2,yPos,this.radius*1.5);
+    ellipse(position,yPos,this.radius*1.5);
 
     // draw small dots around them
     for(var i = 0; i < 16; i++){
       for (var j = 0;j < this.group; j++){
         push();
 
-        var n = sineMovement(map(j+1,1,this.group,-PI/8,PI);
+        var n = sineMovement(map(j+1,1,this.group,-PI/8,PI));
 
         translate(xPos+cos(i*PI/8+j*PI/(this.group*8)+PI/4)*this.radius,
         yPos+sin(i*PI/8+j*PI/(this.group*8)+PI/4)*this.radius)
@@ -73,6 +76,8 @@ function draw() {
   }
   background(95,014,225,80);
   var spectrum = fft.analyze(32).slice(0,16);
+
+
 
   // call the function
   var size = map(mouseX,0,width,60,400);

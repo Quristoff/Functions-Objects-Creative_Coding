@@ -7,7 +7,7 @@ var prevSpectrum = new Array(16).fill(0);
 
 // function with parameters 1
 function sineMovement(double) {
-  return 0.5*(sin(double))+1;
+  return 0.5*sin(double)+1;
 }
 
 // object audioBall

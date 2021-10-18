@@ -5,16 +5,16 @@ var prevSpectrum = new Array(16).fill(0);
 
 
 
-// function with parameterss 1
-function rangeMedian(int) {
-  return floor((int+1)/2);
+// function with parameters 1
+function sineMovement(double) {
+  return 0.5*(sin(double))+1);
 }
 
 // object audioBall
 var audioBall = {
   radius: 10,
   group: 10,
-  draw: function (xPos,yPos,array) {
+  draw: function (xPos,yPos,array) { // method with parameter 2
 
 
     // two auxilitary balls
@@ -29,11 +29,11 @@ var audioBall = {
       for (var j = 0;j < this.group; j++){
         push();
 
-        var n = 0.5*(sin(map(j+1,1,this.group,-PI/8,PI))+1);
+        var n = sineMovement(map(j+1,1,this.group,-PI/8,PI);
 
         translate(xPos+cos(i*PI/8+j*PI/(this.group*8)+PI/4)*this.radius,
         yPos+sin(i*PI/8+j*PI/(this.group*8)+PI/4)*this.radius)
-        // let them move ina sine wave of manner
+        // let them move in a sine wave of manner
 
         rotate(i*PI/8+j*PI/(this.group*8));
         translate(n*map(array[i],0,255,0,40),n*map(array[i],0,255,0,70));
@@ -63,11 +63,14 @@ function preload() {
 
 function setup() {
   createCanvas(1024,640);
-  novelist.loop();
+  //novelist.loop();
   novelist.setVolume(0.3);
 }
 
 function draw() {
+  if (!novelist.isPlaying()) {
+    novelist.play();
+  }
   background(95,014,225,80);
   var spectrum = fft.analyze(32).slice(0,16);
 
